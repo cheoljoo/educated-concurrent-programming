@@ -34,7 +34,7 @@ void Reader(std::string_view name)
         m.unlock_shared();
         std::this_thread::sleep_for(10ms);
     }
-}
+} 
 
 int main()
 {

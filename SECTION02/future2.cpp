@@ -20,9 +20,9 @@ int main()
     std::promise<int> pm;
 //    std::future<int> ft = pm.get_future();
     //std::future<int> ft2 = ft; // error
-//    std::shared_future<int> sft = ft.share();
+//    std::shared_future<int> sft = ft.share();    // 방법 1 : 복사 가능
 
-    std::shared_future<int> sft = pm.get_future();
+    std::shared_future<int> sft = pm.get_future();    // 방법 2 : shared future를 꺼내는 2번째 방법
  
     std::thread t(add, std::move(pm), 10, 20);
 

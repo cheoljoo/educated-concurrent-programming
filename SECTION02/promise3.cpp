@@ -9,13 +9,13 @@ int main()
     std::vector<int> v1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     std::vector<int> v2(10);
 
-    std::promise<void> pm1;
+    std::promise<void> pm1;   // 끝났음만 알지 , 값을 줄 것은 아님.
     std::future<void>  ft1 = pm1.get_future();
 
     std::promise<int> pm2;
     std::future<int>  ft2 = pm2.get_future();
 
-    std::thread t( [&]{
+    std::thread t( [&]{        // [=] 으로 하면 복사본으로 v2를 못 쓰므로 , & 으로 정의한다.   lambda 표현식으로 thread 생성
         std::partial_sum(v1.begin(), v1.end(), v2.begin()); // 부분합 구하기
 
         pm1.set_value( );  // 1번째 연산이 종료되었음을 알린다.

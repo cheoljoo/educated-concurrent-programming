@@ -28,7 +28,7 @@ void transfer(Account& acc1, Account& acc2, int cnt)
 void transfer(Account& acc1, Account& acc2, int cnt)
 {
     std::lock(acc1.m, acc2.m);
-    std::lock_guard<std::mutex> lg1(acc1.m, std::adopt_lock);
+    std::lock_guard<std::mutex> lg1(acc1.m, std::adopt_lock);   // unlock만 사용하겠다는 것
     std::lock_guard<std::mutex> lg2(acc2.m, std::adopt_lock);
 
     acc1.money -= cnt;
@@ -39,8 +39,8 @@ void transfer(Account& acc1, Account& acc2, int cnt)
 
 void transfer(Account& acc1, Account& acc2, int cnt)
 {
-//    std::scoped_lock<std::mutex, std::mutex> lg(acc1.m, acc2.m);// ok
-    std::scoped_lock lg(acc1.m, acc2.m);// ok
+//    std::scoped_lock<std::mutex, std::mutex> lg(acc1.m, acc2.m);// ok   C++17 인자추론에 의해서 생략해도 알아서 생성 from c++17
+    std::scoped_lock lg(acc1.m, acc2.m);// ok  : 내부적으로 std::lock으로 관리    RAII
 
     acc1.money -= cnt;
     acc2.money += cnt;

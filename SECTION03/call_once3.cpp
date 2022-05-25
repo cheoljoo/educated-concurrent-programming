@@ -3,6 +3,10 @@
 #include <mutex>
 using namespace std::literals;
 
+// Mayer's singleton
+// static 지역 변수는 thread safe 하다. 
+
+
 class Singleton
 {
 private:

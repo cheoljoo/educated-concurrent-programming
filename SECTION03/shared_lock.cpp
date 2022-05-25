@@ -14,7 +14,8 @@ void Writer()
     while(1)
     {
         {
-            std::lock_guard<std::shared_mutex> lg(m);
+            std::lock_guard<std::shared_mutex> lg(m);   // RAII   
+                        //예외가 발생해도 지역변수는 안전하게 소멸된다. 
             share_data = share_data + 1;
             std::cout << "Writer : " << share_data << std::endl;
             std::this_thread::sleep_for(1s);        
@@ -31,7 +32,7 @@ void Reader(std::string_view name)
             //m.lock_shared();
         
             //std::lock_guard<std::shared_mutex> lg(m);    
-            std::shared_lock<std::shared_mutex> lg(m);
+            std::shared_lock<std::shared_mutex> lg(m);   // shared_mutex를 사용할때 unlock을 알아서 하게 하고 싶을 때
                 
             std::cout << "Reader(" << name <<  ") : " << share_data << std::endl;
             std::this_thread::sleep_for(500ms);

@@ -13,7 +13,7 @@ int main()
 
     std::thread t1(&f1);
     std::thread t2(&f2, 10, 3.4);
-    std::thread t3(&f3, 10, std::ref(n), std::move(s) );
+    std::thread t3(&f3, 10, std::ref(n), std::move(s) );   // 중요 : lvalue : ref()로  , rvalue : move()로 보냄
     t1.join();
     t2.join();
     t3.join();

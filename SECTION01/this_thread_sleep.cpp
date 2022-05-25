@@ -9,10 +9,10 @@ createDateTime(int year, int month, int day, int hour, int minute, int second);
 int main()
 {
     std::this_thread::sleep_for(std::chrono::seconds(3));
-    std::this_thread::sleep_for(3s); // 3ms, 3ns, 3min
+    std::this_thread::sleep_for(3s); // 3ms, 3ns, 3min  with using namespace std::literals;
     //std::this_thread::sleep_for(3);  // error
 
-    std::chrono::time_point tp1 = std::chrono::steady_clock::now();
+    std::chrono::time_point tp1 = std::chrono::steady_clock::now();  // get current time
     std::this_thread::sleep_until( tp1 + 2000ms );    
 
     auto tp2 = createDateTime(2021, 4, 11, 12, 39, 00);

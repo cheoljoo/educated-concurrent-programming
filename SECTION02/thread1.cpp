@@ -16,7 +16,7 @@ int main()
     std::thread t(&foo);
 
  //   t.join();
-    t.detach();
+    t.detach();   // thread는 알아서 따로 수행하라.
     std::cout << "end" << std::endl;
 
     int n;

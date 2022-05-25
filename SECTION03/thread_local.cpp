@@ -6,7 +6,7 @@ thread_local int x = 0;
 
 int next3times()
 {
-//	thread_local static int n = 0;
+	// thread_local static int n = 0;
 	thread_local int n = 0;
 	n = n + 3;
 	return n;

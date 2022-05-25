@@ -6,7 +6,7 @@
 #include <semaphore>
 using namespace std::literals;
 
-std::counting_semaphore<3> sem(3); 
+std::counting_semaphore<3> sem(3);    // c++20
 std::mutex m;
 
 void Download(std::string name)

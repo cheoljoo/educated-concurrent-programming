@@ -12,7 +12,7 @@ int main()
     std::packaged_task<int(int, int)> task(add);
     std::future<int> ft = task.get_future();
 
-    //task(10, 20); // add(10, 20)
+    //task(10, 20); // add(10, 20)   그냥 호출한 것임
     std::thread t(std::move(task), 10, 20);
     std::cout << "continue main" << std::endl;
     

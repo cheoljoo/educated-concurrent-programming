@@ -13,5 +13,5 @@ void mysleep(std::chrono::microseconds us)
 
 int main()
 {
-    mysleep(1s);
+    mysleep(1s);   // same as sleep_for()
 }

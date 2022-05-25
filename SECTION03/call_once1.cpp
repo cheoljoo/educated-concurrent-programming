@@ -16,7 +16,7 @@ void foo()
 {
     std::cout << "start foo" << std::endl;
     //init(10, 3.4);    
-    std::call_once(init_flag, init, 10, 3.4 );
+    std::call_once(init_flag, init, 10, 3.4 );   // init이 끝나지 않았으면 , 다른 thread들은 뒤로 넘어가지 못하고 기다리게 된다. 
 	std::cout << "finish foo" << std::endl;
 }
 int main()
