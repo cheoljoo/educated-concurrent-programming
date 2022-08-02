@@ -3,6 +3,8 @@
 #include <atomic>
 #include <memory>
 
+// 복사 
+// foo는 thread safe
 void foo()
 {
     std::shared_ptr<int> ptr = std::make_shared<int>(5);
@@ -21,6 +23,7 @@ void foo()
     t2.join();
 }
 
+// 참조 
 void goo()
 {
 //    std::shared_ptr<int> ptr = std::make_shared<int>(5);
